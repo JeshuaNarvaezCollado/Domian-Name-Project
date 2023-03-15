@@ -2,41 +2,29 @@
 import "bootstrap";
 import "./style.css";
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
-
 window.onload = function() {
-  //write your code here
 
-  let pronouns = ["the", "our", "my"];
-  let adjs = ["great", "big", "small", "amazing"];
-  let nouns = ["jogger", "racoon", "runner", "walker"];
-  let domains = ["com", "us", "es"];
+  document.querySelector("#btn").addEventListener("click", () => {
+  document.querySelector("#domain").innerHTML = domainGenerator();
+  });
+  console.log("Domain Name Genertor");
+};
 
-  let name = "";
+  let domainGenerator = () => {
+  let pronoun = ["the", "our"];
+  let adj = ["strong", "giant"];
+  let noun = ["runner", "whale"];
+  let ext = [".org", ".com", ".uk", ".net"];
 
-  // Using for of*
-  for (let pronoun of pronouns) {
-    for (let adj of adjs) {
-      for (let noun of nouns) {
-        for (let domain of domains) {
-          name = `${pronoun}${adj}${noun}.${domain}`;
-          console.log(name);
-        }
-      }
-    }
-  }
+  let pronounIndex = Math.floor(Math.random() * pronoun.length);
+  let adjIndex = Math.floor(Math.random() * adj.length);
+  let nounIndex = Math.floor(Math.random() * noun.length);
+  let extIndex = Math.floor(Math.random() * ext.length);
 
-  /* Using classic fors
-  for (let i = 0; i < pronouns.length; i++) {
-    for (let j = 0; j < adjs.length; j++) {
-      for (let k = 0; k < nouns.length; k++) {
-        for (let l = 0; l < domains.length; l++) {
-          name = `${pronouns[i]}${adjs[j]}${nouns[k]}.${domains[l]}`;
-          console.log(name);
-        }
-      }
-    }
-  }*/
-  console.log("Hello Rigo from the console!");
+  return (
+    pronoun[pronounIndex] + 
+    adj[adjIndex] + 
+    noun[nounIndex] + 
+    ext[extIndex]
+  );
 };
